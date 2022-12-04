@@ -38,8 +38,8 @@ const Dashboard = () => {
                   <img src={UserLogin} className="w-40 h-40 m-1" />
                 </div>
               </div>
-              <div className="text-3xl text-gray-200 p-1 m-1">Profile Section</div>
-              <div className="text-2xl text-sky-200 p-1 m-1">{`Your email`}</div>
+              <div className="text-3xl text-gray-500 p-1 m-1">Profile Section</div>
+              <div className="text-2xl text-sky-400 p-1 m-1">{`Your email`}</div>
               <div className="text-2xl text-sky-400 p-1 mb-5">{currentUser.email}</div>
               <div className="text-center m-3 flex justify-center ">
                 <button>

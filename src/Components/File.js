@@ -15,10 +15,10 @@ const File = ({ file }) => {
     return aa;
   }
   return (
-    <div className="flex flex-wrap flex-col m-2 p-2">
+    <div className="flex flex-wrap rounded-lg m-1 border-2 border-sky-400 flex-col p-2">
       <div className="flex flex-wrap justify-center"><img src={ffile} className="w-10 h-10" alt="" />
       </div>
-      <a href={file.url} target="_blank" className="text-1xl text-gray-200 hover:text-sky-200 no-underline">
+      <a href={file.url} target="_blank" className="text-1xl text-gray-500 hover:text-sky-500 no-underline">
         {stringer(file.name)}
       </a>
     </div>
