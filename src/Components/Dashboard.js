@@ -1,6 +1,6 @@
 import React, { Component, useState } from "react";
-import { Navigate, Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import { Navigate, Link } from "react-router-dom";
 import UserLogin from "./user-login.png";
 
 const Dashboard = () => {

@@ -2,19 +2,18 @@ import React, { Component, useRef, useState } from "react";
 import { storage, database } from "../firebase";
 import { ProgressBar, Toast } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import file from "./file.png";
 import ReactDOM from "react-dom";
+import file from "./file.png";
 import folder from "./folder.png";
 import { v4 as uuidV4 } from "uuid";
 import { useFolder, ROOT_FOLDER } from "../Hooks/useFolder";
 const AddFolder = (props) => {
   const { currentFolder } = props;
   const [modal, setModal] = useState({ display: "none" });
+  const [uploadingFiles, setUploadingFiles] = useState([]);
   const [name, setName] = useState("");
   const { currentUser } = useAuth();
   const fileRef = useRef(null);
-  const [uploadingFiles, setUploadingFiles] = useState([]);
 
   if (currentUser === undefined) {
     currentUser = JSON.parse(localStorage.getItem("localKey"));

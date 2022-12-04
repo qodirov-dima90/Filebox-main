@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import Signup from "./Components/Signup";
-import Dashboard from "./Components/Dashboard";
-import AuthProvider from "./contexts/AuthContext";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import PrivateRoute from "./PrivateRoute";
 import Navbar from "./Components/Navbar";
+import Home from "./Components/Home";
+import Dashboard from "./Components/Dashboard";
+import PrivateRoute from "./PrivateRoute";
+import AuthProvider from "./contexts/AuthContext";
+import Signup from "./Components/Signup";
 import Login from "./Components/Login";
 import Forgot from "./Components/Forgot";
-import Home from "./Components/Home";
 import "./App.css";
 
 import Task from "./Components/Task";

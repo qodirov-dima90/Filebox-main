@@ -6,44 +6,44 @@ export const ROOT_FOLDER = {
   id: null,
   path: [],
 };
-export const useFolder =(folderId = null, folder = null) => {
-  var {currentUser} = useAuth();
-    const ACTIONS = {
-        SELECT_FOLDER: "selects folder",
-        UPDATE_FOLDER:"update folder",
-        SET_CHILD_FOLDERS:"set-child-folders",
-        SET_CHILD_FILES: "set-child-files"
-      }; 
-      
-      const Reducer = (state, { type, payload }) => {
-          switch (type) {
-            case ACTIONS.SELECT_FOLDER:
-              return {
-                folderId: payload.folderId,
-                folder: payload.folder,
-                childFolders: [],
-                childFiles: [],
-              };
-              case ACTIONS.UPDATE_FOLDER:
-                return{
-                  ...state,folder:payload.folder,
-                }
-                case ACTIONS.SET_CHILD_FOLDERS:
-                  return{
-                    ...state,childFolders:payload.childFolders,
-                  }
-                  case ACTIONS.SET_CHILD_FILES:
-                    return {
-                      ...state,
-                      childFiles: payload.childFiles,
-                    }
+export const useFolder = (folderId = null, folder = null) => {
+  var { currentUser } = useAuth();
+  const ACTIONS = {
+    SELECT_FOLDER: "selects folder",
+    UPDATE_FOLDER: "update folder",
+    SET_CHILD_FOLDERS: "set-child-folders",
+    SET_CHILD_FILES: "set-child-files"
+  };
 
-            default:
-              return state;
-          }
+  const Reducer = (state, { type, payload }) => {
+    switch (type) {
+      case ACTIONS.SELECT_FOLDER:
+        return {
+          folderId: payload.folderId,
+          folder: payload.folder,
+          childFolders: [],
+          childFiles: [],
         };
+      case ACTIONS.UPDATE_FOLDER:
+        return {
+          ...state, folder: payload.folder,
+        }
+      case ACTIONS.SET_CHILD_FOLDERS:
+        return {
+          ...state, childFolders: payload.childFolders,
+        }
+      case ACTIONS.SET_CHILD_FILES:
+        return {
+          ...state,
+          childFiles: payload.childFiles,
+        }
 
-  const [state, dispatch] = useReducer(Reducer,{
+      default:
+        return state;
+    }
+  };
+
+  const [state, dispatch] = useReducer(Reducer, {
     folderId: folderId,
     folder: folder,
     childFolders: [],
@@ -53,24 +53,24 @@ export const useFolder =(folderId = null, folder = null) => {
     dispatch({ type: ACTIONS.SELECT_FOLDER, payload: { folderId, folder } });
   }, [folderId, folder]);
 
-  useEffect(()=>{
-      if(folderId===null){
-          return dispatch({type:ACTIONS.UPDATE_FOLDER,payload:{folder:ROOT_FOLDER}})
-      }
-      database.folders.doc(folderId).get().then(doc=>{
-         
-        dispatch({type:ACTIONS.UPDATE_FOLDER,payload:{folder:database.formatDoc(doc)}});
-        
-        
-      }).catch((err)=>{
-        console.error(err);
-          dispatch({type:ACTIONS.UPDATE_FOLDER,payload:{folder:ROOT_FOLDER}})
-      });
-    
-  },[folderId])
+  useEffect(() => {
+    if (folderId === null) {
+      return dispatch({ type: ACTIONS.UPDATE_FOLDER, payload: { folder: ROOT_FOLDER } })
+    }
+    database.folders.doc(folderId).get().then(doc => {
+
+      dispatch({ type: ACTIONS.UPDATE_FOLDER, payload: { folder: database.formatDoc(doc) } });
+
+
+    }).catch((err) => {
+      console.error(err);
+      dispatch({ type: ACTIONS.UPDATE_FOLDER, payload: { folder: ROOT_FOLDER } })
+    });
+
+  }, [folderId])
 
   useEffect(() => {
-    if(currentUser===undefined){
+    if (currentUser === undefined) {
       return state;
     }
     return database.folders
@@ -87,7 +87,7 @@ export const useFolder =(folderId = null, folder = null) => {
 
 
   useEffect(() => {
-    if(currentUser===undefined){
+    if (currentUser === undefined) {
       return state;
     }
     return (
@@ -102,6 +102,6 @@ export const useFolder =(folderId = null, folder = null) => {
         })
     )
   }, [folderId, currentUser])
-  
+
   return state;
 };

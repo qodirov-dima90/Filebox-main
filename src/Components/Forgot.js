@@ -5,9 +5,9 @@ const Forgot = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { forgotPassword } = useAuth();
-  const [error, setError] = useState("");
   const [errStyle, setErrStyle] = useState({ display: "none" });
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const [status, setStatus] = useState("");
   const navigate = useNavigate();
 
