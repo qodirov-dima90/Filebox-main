@@ -206,10 +206,7 @@ const AddFolder = (props) => {
           <div className="col-3"><h5 className="text-primary">Upload your desired file</h5></div>
         </div>
       </div>
-
-
-
-
+      
       {uploadingFiles.length > 0 &&
         ReactDOM.createPortal(
           <div
